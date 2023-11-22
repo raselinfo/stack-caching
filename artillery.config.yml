@@ -1,0 +1,12 @@
+config:
+  target: 'http://localhost:4000'
+  phases:
+    - name: 'warmup'
+      duration: 60
+      arrivalRate: 10
+
+scenarios:
+  - name: "Search for photos😜"
+    flow:
+      - get:
+          url: "/photos?_start=0&_limit=10"

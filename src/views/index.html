@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hello build file............</h1>
+    <button id="button">Fetch Data</button>
+    <pre id="showData">
+
+
+    </pre>
+    <script>
+        const button = document.querySelector('#button');
+        const showData = document.querySelector('#showData');
+
+        button.addEventListener("click", () => {
+            fetch("http://localhost:4000/users").then(res => {
+                console.log('Cache-Control headers', res.headers.get('Cache-Control'))
+                return res.json()
+            }).then(data => {
+                console.log("data", data)
+                showData.innerHTML = JSON.stringify(data, null, 2)
+            }).catch(err => {
+                console.log("Error", err)
+            })
+        })
+
+    </script>
+</body>
+
+</html>
